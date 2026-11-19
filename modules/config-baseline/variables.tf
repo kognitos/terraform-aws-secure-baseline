@@ -57,3 +57,9 @@ variable "tags" {
     "Terraform" = "true"
   }
 }
+
+variable "recording_enabled" {
+  description = "Whether the configuration recorder in this region records (aws_config_configuration_recorder_status.is_enabled). The recorder, delivery channel and SNS topic are created either way."
+  type        = bool
+  default     = true
+}
