@@ -107,8 +107,9 @@ resource "aws_iam_role_policy_attachment" "recorder_read_policy" {
 # --------------------------------------------------------------------------------------------------
 
 module "config_baseline_ap-northeast-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-northeast-1")
 
   providers = {
     aws = aws.ap-northeast-1
@@ -128,8 +129,9 @@ module "config_baseline_ap-northeast-1" {
 }
 
 module "config_baseline_ap-northeast-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-2") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-2") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-northeast-2")
 
   providers = {
     aws = aws.ap-northeast-2
@@ -149,8 +151,9 @@ module "config_baseline_ap-northeast-2" {
 }
 
 module "config_baseline_ap-northeast-3" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-3") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-northeast-3") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-northeast-3")
 
   providers = {
     aws = aws.ap-northeast-3
@@ -170,8 +173,9 @@ module "config_baseline_ap-northeast-3" {
 }
 
 module "config_baseline_ap-south-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-south-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-south-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-south-1")
 
   providers = {
     aws = aws.ap-south-1
@@ -191,8 +195,9 @@ module "config_baseline_ap-south-1" {
 }
 
 module "config_baseline_ap-southeast-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-southeast-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-southeast-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-southeast-1")
 
   providers = {
     aws = aws.ap-southeast-1
@@ -212,8 +217,9 @@ module "config_baseline_ap-southeast-1" {
 }
 
 module "config_baseline_ap-southeast-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ap-southeast-2") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ap-southeast-2") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ap-southeast-2")
 
   providers = {
     aws = aws.ap-southeast-2
@@ -233,8 +239,9 @@ module "config_baseline_ap-southeast-2" {
 }
 
 module "config_baseline_ca-central-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "ca-central-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "ca-central-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "ca-central-1")
 
   providers = {
     aws = aws.ca-central-1
@@ -254,8 +261,9 @@ module "config_baseline_ca-central-1" {
 }
 
 module "config_baseline_eu-central-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "eu-central-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "eu-central-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "eu-central-1")
 
   providers = {
     aws = aws.eu-central-1
@@ -275,8 +283,9 @@ module "config_baseline_eu-central-1" {
 }
 
 module "config_baseline_eu-north-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "eu-north-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "eu-north-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "eu-north-1")
 
   providers = {
     aws = aws.eu-north-1
@@ -296,8 +305,9 @@ module "config_baseline_eu-north-1" {
 }
 
 module "config_baseline_eu-west-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "eu-west-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "eu-west-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "eu-west-1")
 
   providers = {
     aws = aws.eu-west-1
@@ -317,8 +327,9 @@ module "config_baseline_eu-west-1" {
 }
 
 module "config_baseline_eu-west-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "eu-west-2") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "eu-west-2") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "eu-west-2")
 
   providers = {
     aws = aws.eu-west-2
@@ -338,8 +349,9 @@ module "config_baseline_eu-west-2" {
 }
 
 module "config_baseline_eu-west-3" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "eu-west-3") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "eu-west-3") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "eu-west-3")
 
   providers = {
     aws = aws.eu-west-3
@@ -359,8 +371,9 @@ module "config_baseline_eu-west-3" {
 }
 
 module "config_baseline_sa-east-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "sa-east-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "sa-east-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "sa-east-1")
 
   providers = {
     aws = aws.sa-east-1
@@ -380,8 +393,9 @@ module "config_baseline_sa-east-1" {
 }
 
 module "config_baseline_us-east-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "us-east-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "us-east-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "us-east-1")
 
   providers = {
     aws = aws.us-east-1
@@ -401,8 +415,9 @@ module "config_baseline_us-east-1" {
 }
 
 module "config_baseline_us-east-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "us-east-2") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "us-east-2") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "us-east-2")
 
   providers = {
     aws = aws.us-east-2
@@ -422,8 +437,9 @@ module "config_baseline_us-east-2" {
 }
 
 module "config_baseline_us-west-1" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "us-west-1") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "us-west-1") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "us-west-1")
 
   providers = {
     aws = aws.us-west-1
@@ -443,8 +459,9 @@ module "config_baseline_us-west-1" {
 }
 
 module "config_baseline_us-west-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "us-west-2") ? 1 : 0
-  source = "./modules/config-baseline"
+  count             = var.config_baseline_enabled && contains(var.target_regions, "us-west-2") ? 1 : 0
+  source            = "./modules/config-baseline"
+  recording_enabled = !contains(var.config_recording_disabled_regions, "us-west-2")
 
   providers = {
     aws = aws.us-west-2

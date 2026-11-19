@@ -265,6 +265,12 @@ variable "config_baseline_enabled" {
   default     = true
 }
 
+variable "config_recording_disabled_regions" {
+  description = "Regions whose AWS Config recorder is created but left stopped (is_enabled = false), e.g. to keep a region out of Config recording for cost. Empty = record in every target region."
+  type        = list(string)
+  default     = []
+}
+
 variable "config_delivery_frequency" {
   description = "The frequency which AWS Config sends a snapshot into the S3 bucket."
   type        = string
